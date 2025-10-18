@@ -3,10 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title Here</title>
+    <title>To-Do List</title>
     <script src="./index.js" defer></script>
 </head>
 <body>
-    <div id="test" class="text-3xl font-extrabold underline">Hello There, if this is styled then tailwind build has worked</div>
+    <div id="start-page" class="flex flex-col">
+        <div id="title" class="flex items-center justify-center text-5xl font-extrabold pt-2 pb-1 text-red-500 [-webkit-text-stroke:2px_black]">
+            To-Do
+        </div>
+        <div id="priority-section" class="mt-8 flex items-center justify-center gap-10">
+            <div id="scheduled" class="priority-card">
+                <div class="priority-card-title">
+                    Scheduled
+                </div>
+                <div class="tasks">
+                    <div>
+                        Example task one
+                    </div>
+                    <div>
+                        Example task two
+                    </div>
+                </div>
+            </div>
+            <div id="daily" class="priority-card">
+                <div class="priority-card-title">
+                    Daily Tasks
+                </div>
+                <div class="tasks">
+                    <div>Example task one</div>
+                    <div>Example task two</div>
+                </div>
+            </div>
+        </div>
+        <div id="projects" class="flex flex-col items-center justify-center mt-8">
+            <div class="text-3xl font-bold pb-3 text-red-500 [-webkit-text-stroke:0.7px_black]">
+                My Projects
+            </div>
+            <div id="project-cards" class="flex flex-row gap-5 pb-2 flex-wrap justify-center items-center">
+                 <div class="project-card">
+                    <div class="project-title"> 
+                        Project 1
+                    </div>
+                    <div class="project-desc">
+                        Description....
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        Project 2
+                    </div>
+                    <div class="project-desc">
+                        Description....
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        Project 3
+                    </div>
+                    <div class="project-desc">
+                        Description....
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        Project 4
+                    </div>
+                    <div class="project-desc">
+                        Description....
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="flex justify-center items-center pb-9 pt-18 text-xs">
+            <div id="footer-text" class="text-white duration-300 hover:text-black">
+                Copyright @ Dale Peligro 2025
+            </div>
+        </div>
+    </div>
 </body>
 </html>
