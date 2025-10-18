@@ -2,7 +2,7 @@
 
 @layer components {
     .priority-card {
-        @apply flex flex-col w-100 h-75 bg-amber-100 border-2 transition-transform duration-425 hover:scale-110 cursor-pointer;
+        @apply flex flex-col w-100 h-75 bg-amber-100 border-2 transition-transform duration-450 hover:scale-115 cursor-pointer;
     }
 
     .priority-card-title {
