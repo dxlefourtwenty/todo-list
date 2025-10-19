@@ -7,7 +7,7 @@
     <script src="./index.js" defer></script>
 </head>
 <body>
-    <div id="start-page" class="flex flex-col">
+    <div id="start-page" class="page flex flex-col">
         <div id="title" class="flex items-center justify-center text-5xl font-extrabold pt-2 pb-1 text-red-500 [-webkit-text-stroke:2px_black]">
             To-Do
         </div>
@@ -75,8 +75,28 @@
             </div>
         </div>
         <div id="footer" class="flex justify-center items-center pb-9 pt-18 text-xs">
-            <div id="footer-text" class="text-white duration-300 hover:text-black">
+            <div id="footer-text" class="text-black duration-100 hover:text-red-800 hover:font-bold">
                 Copyright @ Dale Peligro 2025
+            </div>
+        </div>
+    </div>
+
+    <div id="task-page" class="page hidden">
+        <div class="nav">
+            <div clas="flex flex-col">
+                <div class="return-home group" data-target="start-page">
+                    << <span class="return-home-hover">Return Home</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="scheduled-page" class="page hidden">
+        <div class="nav">
+            <div clas="flex flex-col">
+                <div class="return-home group" data-target="start-page">
+                    << <span class="return-home-hover">Return Home</span>
+                </div>
             </div>
         </div>
     </div>

@@ -24,5 +24,17 @@
     .project-desc {
         @apply pl-12;
     }
+
+    .return-home {
+        @apply w-33 py-0 pb-1 ml-2 cursor-pointer font-bold text-white tracking-tighter;
+    }
+
+    .return-home-hover {
+        @apply text-blue-600 duration-200 group-hover:text-white pointer-events-none;
+    }
+
+    .nav {
+        @apply bg-blue-600;
+    }
 }
 
