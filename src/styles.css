@@ -52,5 +52,9 @@
     .priority-content {
         @apply h-160 bg-amber-100 flex flex-col text-4xl pl-115 pt-4 gap-10 text-shadow-md;
     }
+
+    #daily-task-modal {
+        @apply flex flex-col fixed inset-0 bg-black/75 items-center justify-center;
+    }
 }
 

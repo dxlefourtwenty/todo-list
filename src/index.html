@@ -7,7 +7,7 @@
     <script src="./index.js" defer></script>
 </head>
 <body>
-    <div id="start-page" class="page flex flex-col">
+    <div id="start-page" class="hidden page flex flex-col">
         <div id="title" class="flex items-center justify-center text-5xl font-extrabold pt-2 pb-1 text-red-500 [-webkit-text-stroke:2px_black]">
             To-Do
         </div>
@@ -29,9 +29,7 @@
                 <div class="priority-card-title">
                     Daily Tasks
                 </div>
-                <div class="tasks">
-                    <div>1. Task One</div>
-                    <div>2. Task Two</div>
+                <div id="start-page-daily" class="tasks">
                 </div>
             </div>
         </div>
@@ -81,7 +79,7 @@
         </div>
     </div>
 
-    <div id="task-page" class="page hidden">
+    <div id="task-page" class="page">
         <div class="nav flex flex-row items-center relative">
             <div class="flex flex-row">
                 <div class="return-home group" data-target="start-page">
@@ -89,10 +87,10 @@
                 </div>
             </div>
             <div class="priority-buttons">
-                <div class="nav-button">
+                <div id="new-daily-task" class="nav-button">
                     New
                 </div>
-                <div class="nav-button">
+                <div id="edit-daily-task" class="nav-button">
                     Edit
                 </div>
             </div>
@@ -101,14 +99,21 @@
             <div class="priority-title">
                 Daily Tasks
             </div>
-            <div class="priority-content">
-                 <div>1. Task One</div>
-                 <div>2. Task Two</div>
+            <div id="daily-task-content" class="priority-content">
             </div>
         </div>
 
-        <div id="task-modal" class="hidden">
-
+        <div id="daily-task-modal" class="hidden">
+            <div class="text-white font-bold pb-1 text-2xl">
+                Add a Task
+            </div>
+             <form id="daily-task-form" class="bg-white p-6 rounded-lg w-80 h-15 flex items-center">
+                <input 
+                    id="daily-task-input" 
+                    type="text" placeholder="..." 
+                    class="w-full font-bold focus:outline-none"
+                >
+             </form>
         </div>
     </div>
 
