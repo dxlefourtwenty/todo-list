@@ -30,11 +30,27 @@
     }
 
     .return-home-hover {
-        @apply text-blue-600 duration-200 group-hover:text-white pointer-events-none;
+        @apply text-red-500 duration-200 group-hover:text-white pointer-events-none;
     }
 
     .nav {
-        @apply bg-blue-600;
+        @apply bg-red-500;
+    }
+
+    .priority-buttons {
+        @apply flex flex-row gap-2 text-white font-bold pb-1 justify-center w-full -translate-x-18;
+    }
+
+    .nav-button {
+        @apply cursor-pointer hover:text-gray-300 hover:[-webkit-text-stroke:0.2px_black];
+    }
+
+    .priority-title {
+        @apply h-20 text-center text-6xl font-bold text-shadow-lg bg-amber-200 [-webkit-text-stroke:0.7px_black];
+    }
+
+    .priority-content {
+        @apply h-160 bg-amber-100 flex flex-col text-4xl pl-115 pt-4 gap-10 text-shadow-md;
     }
 }
 

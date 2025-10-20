@@ -18,10 +18,10 @@
                 </div>
                 <div class="tasks">
                     <div>
-                        Example task one
+                        1. Scheduled Task One
                     </div>
                     <div>
-                        Example task two
+                        2. Scheduled Task Two
                     </div>
                 </div>
             </div>
@@ -30,8 +30,8 @@
                     Daily Tasks
                 </div>
                 <div class="tasks">
-                    <div>Example task one</div>
-                    <div>Example task two</div>
+                    <div>1. Task One</div>
+                    <div>2. Task Two</div>
                 </div>
             </div>
         </div>
@@ -82,21 +82,59 @@
     </div>
 
     <div id="task-page" class="page hidden">
-        <div class="nav">
-            <div clas="flex flex-col">
+        <div class="nav flex flex-row items-center relative">
+            <div class="flex flex-row">
                 <div class="return-home group" data-target="start-page">
                     << <span class="return-home-hover">Return Home</span>
                 </div>
             </div>
+            <div class="priority-buttons">
+                <div class="nav-button">
+                    New
+                </div>
+                <div class="nav-button">
+                    Edit
+                </div>
+            </div>
+        </div>
+        <div class="border-2 h-180">
+            <div class="priority-title">
+                Daily Tasks
+            </div>
+            <div class="priority-content">
+                 <div>1. Task One</div>
+                 <div>2. Task Two</div>
+            </div>
+        </div>
+
+        <div id="task-modal" class="hidden">
+
         </div>
     </div>
 
     <div id="scheduled-page" class="page hidden">
-        <div class="nav">
-            <div clas="flex flex-col">
+        <div class="nav flex-row items-center relative">
+            <div class="flex flex-row">
                 <div class="return-home group" data-target="start-page">
                     << <span class="return-home-hover">Return Home</span>
                 </div>
+                <div class="priority-buttons">
+                    <div class="nav-button">
+                        New
+                    </div>
+                    <div class="nav-button">
+                        Edit
+                    </div>
+                </div>  
+            </div>    
+        </div>
+        <div class="border-2 h-180">
+            <div class="priority-title">
+                Scheduled
+            </div>
+            <div class="priority-content">
+                 <div>1. Scheduled Task One</div>
+                 <div>2. Scheduled Task Two</div>
             </div>
         </div>
     </div>
