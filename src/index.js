@@ -8,6 +8,8 @@ const id2 = DailyTasks.newDailyTask("Walk the dog");
 const id3 = DailyTasks.newDailyTask("Workout");
 const id4 = DailyTasks.newDailyTask("Meditate");
 Display.displayDailyTasks();
+DailyTasks.updateRemainingTasks();
+Display.displayDailyTasksStart();
 
 const daily = document.getElementById("daily");
 const scheduled = document.getElementById("scheduled");
@@ -65,8 +67,10 @@ newDailyTask.addEventListener("click", () => {
 document.getElementById("clear-daily-task")
     .addEventListener("click", () => {
         DailyTasks.clearTasks();
+        DailyTasks.updateRemainingTasks();
         Display.displayDailyTasks();
-    });
+        Display.displayDailyTasksStart();
+});
 
 // Submit task input
 dailyTaskInput.addEventListener("keydown", (e) => {
@@ -75,7 +79,9 @@ dailyTaskInput.addEventListener("keydown", (e) => {
         const value = dailyTaskInput.value.trim();
         if (value) {
             DailyTasks.newDailyTask(value);
+            DailyTasks.updateRemainingTasks();
             Display.displayDailyTasks();
+            Display.displayDailyTasksStart();
             console.log(`${value} created`);
             Display.hideTaskModal();
         }
@@ -94,7 +100,6 @@ dailyTaskModal.addEventListener("click", (e) => {
 // Edit daily tasks
 let editingAll = false;
 const editDailyTaskBtn = document.getElementById("edit-daily-task");
-
 editDailyTaskBtn.addEventListener("click", () => {
     if (!editingAll) {
         DailyTasks.editTasks();

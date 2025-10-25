@@ -1,6 +1,9 @@
+import Display from './display.js';
+
 const DailyTasks = (() => {
     // getTasks() from API db module
     const tasks = new Map();
+    const remainingTasks = new Map();
 
     class DailyTask {
         #name;
@@ -42,6 +45,8 @@ const DailyTasks = (() => {
         const id = Date.now() + Math.random();
         const task = new DailyTask(name);
         tasks.set(id, task);
+
+        updateRemainingTasks();
         
         return id;
     }
@@ -96,6 +101,20 @@ const DailyTasks = (() => {
         return tasks;
     }
 
+    function getRemainingTasks() {
+        return remainingTasks;
+    }
+
+    function updateRemainingTasks() {
+        remainingTasks.clear();
+
+        for (const [id, task] of tasks.entries()) {
+            if (!task.completed) {
+                remainingTasks.set(id, task);
+            }
+        }
+    }
+
     function toggleTask(id) {
         const task = tasks.get(id);
         if (task) {
@@ -112,6 +131,8 @@ const DailyTasks = (() => {
         editTasks,
         saveTasks,
         getDailyTasks,
+        getRemainingTasks,
+        updateRemainingTasks,
         toggleTask,
         clearTasks
     }

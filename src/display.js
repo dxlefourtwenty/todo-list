@@ -19,12 +19,9 @@ const Display = (() => {
 
     function displayDailyTasks() {
         const dailyTaskContainer = document.getElementById("daily-task-content");
-        const startPageDaily = document.getElementById("start-page-daily");
         dailyTaskContainer.innerHTML = "";
-        startPageDaily.innerHTML = "";
 
         let i = 0;
-
         for (const [id, task] of DailyTasks.getDailyTasks().entries()) {
             const taskDiv = document.createElement("div");
             taskDiv.classList.add("daily-task-div");
@@ -38,17 +35,51 @@ const Display = (() => {
             const taskText = document.createElement("span");
             const taskNumber = document.createElement("span");
             taskText.classList.add("daily-task-text");
+            taskNumber.classList.add("daily-task-number");
             taskNumber.textContent = `${i + 1}. `;
             taskText.textContent = `${task.name}`;
             
             taskDiv.appendChild(taskNumber);
             taskDiv.appendChild(taskText);
+
+            checkBox.addEventListener("change", () => {
+                DailyTasks.toggleTask(id);
+                DailyTasks.updateRemainingTasks();
+                displayDailyTasksStart();
+            });
+
             taskDiv.appendChild(checkBox);
             dailyTaskContainer.appendChild(taskDiv);
-            
-            // Clone for start page
-            const clone = taskDiv.cloneNode(true);
-            startPageDaily.appendChild(clone);
+
+            displayDailyTasksStart();
+
+            i++;
+        }
+    }
+
+    function displayDailyTasksStart() {
+        DailyTasks.updateRemainingTasks();
+        const startPageDaily = document.getElementById("start-page-daily");
+        startPageDaily.innerHTML = "";
+
+        if (DailyTasks.getRemainingTasks().size === 0) {
+            startPageDaily.innerHTML = "Completed";
+            return;
+        }
+
+        let i = 0;
+        for (const [id, task] of DailyTasks.getRemainingTasks().entries()) {
+            const taskDivStart = document.createElement("div");
+            const taskNumberStart = document.createElement("span");
+            const taskTextStart = document.createElement("span");
+
+            taskNumberStart.textContent = `${i + 1}. `;
+            taskTextStart.textContent = `${task.name}`;
+
+            taskDivStart.appendChild(taskNumberStart);
+            taskDivStart.appendChild(taskTextStart);
+
+            startPageDaily.appendChild(taskDivStart);
 
             i++;
         }
@@ -66,6 +97,7 @@ const Display = (() => {
         displayHome,
         displayPage,
         displayDailyTasks,
+        displayDailyTasksStart,
         displayTaskModal,
         hideTaskModal,
         hidePage
