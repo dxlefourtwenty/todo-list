@@ -15,6 +15,10 @@ const DailyTasks = (() => {
             return this.#name;
         }
 
+        rename(newName) {
+            this.#name = newName;
+        }
+
         get completed() {
             return this.#completed;
         }
@@ -42,8 +46,50 @@ const DailyTasks = (() => {
         return id;
     }
 
-    function editTask(task) {
+    function editTasks() {
+        const container = document.getElementById("daily-task-content");
+        const checkBoxes = document.querySelectorAll(".daily-task-check");
+        const tasks = container.querySelectorAll(".daily-task-div");
 
+        tasks.forEach(taskDiv => {
+            const span = taskDiv.querySelector(".daily-task-text");
+            if (!span) return;
+            const textarea = document.createElement("textarea");
+            textarea.value = span.textContent;
+            textarea.classList.add("border", "resize-none", "rounded", "h-[3rem]");
+            span.replaceWith(textarea);
+        });
+
+        checkBoxes.forEach(checkBox => {
+            checkBox.classList.add("hidden");
+        });
+    }
+
+    function saveTasks() {
+        const container = document.getElementById("daily-task-content");
+        const checkBoxes = document.querySelectorAll(".daily-task-check");
+        const tasks = container.querySelectorAll(".daily-task-div");
+
+        const taskMap = getDailyTasks();
+
+        tasks.forEach(taskDiv => {
+            const textarea = taskDiv.querySelector("textarea");
+            if (!textarea) return;
+
+            const newName = textarea.value.trim();
+            const span = document.createElement("span");
+            span.classList.add("daily-task-text");
+            span.textContent = newName;
+            textarea.replaceWith(span);
+
+            const id = Number(taskDiv.dataset.id);
+            const task = taskMap.get(id);
+            if (task && typeof task.rename === "function") task.rename(newName);
+        });
+
+        checkBoxes.forEach(checkBox => {
+            checkBox.classList.remove("hidden");
+        });
     }
 
     function getDailyTasks() {
@@ -57,11 +103,17 @@ const DailyTasks = (() => {
         }
     }
 
+    function clearTasks() {
+        tasks.clear();
+    }
+
     return {
         newDailyTask,
-        editTask,
+        editTasks,
+        saveTasks,
         getDailyTasks,
-        toggleTask
+        toggleTask,
+        clearTasks
     }
 
 })();

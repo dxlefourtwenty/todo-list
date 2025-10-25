@@ -22,17 +22,34 @@ const Display = (() => {
         const startPageDaily = document.getElementById("start-page-daily");
         dailyTaskContainer.innerHTML = "";
         startPageDaily.innerHTML = "";
+
         let i = 0;
 
-        for (const task of DailyTasks.getDailyTasks().values()) {
-
+        for (const [id, task] of DailyTasks.getDailyTasks().entries()) {
             const taskDiv = document.createElement("div");
-            const taskCompleted = task.completed ? 'yes' : 'no';
-            taskDiv.textContent = `${i + 1}. ${task.name} ${taskCompleted}`;
-            const clone = taskDiv.cloneNode(true);
+            taskDiv.classList.add("daily-task-div");
+            taskDiv.dataset.id = id;
 
+            const checkBox = document.createElement("input");
+            checkBox.type = "checkbox";
+            checkBox.classList.add("daily-task-check");
+            checkBox.checked = task.completed;
+
+            const taskText = document.createElement("span");
+            const taskNumber = document.createElement("span");
+            taskText.classList.add("daily-task-text");
+            taskNumber.textContent = `${i + 1}. `;
+            taskText.textContent = `${task.name}`;
+            
+            taskDiv.appendChild(taskNumber);
+            taskDiv.appendChild(taskText);
+            taskDiv.appendChild(checkBox);
             dailyTaskContainer.appendChild(taskDiv);
+            
+            // Clone for start page
+            const clone = taskDiv.cloneNode(true);
             startPageDaily.appendChild(clone);
+
             i++;
         }
     }

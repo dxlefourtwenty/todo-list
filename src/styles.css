@@ -56,5 +56,17 @@
     #daily-task-modal {
         @apply flex flex-col fixed inset-0 bg-black/75 items-center justify-center;
     }
+
+    input[type="checkbox"] {
+        @apply w-5 h-5 ml-3;
+    }
+
+    #daily-task-content {
+        @apply h-full;
+    }
+
+    .daily-task-text-editor {
+        @apply w-full h-full;
+    }
 }
 

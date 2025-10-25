@@ -7,13 +7,13 @@ const id1 = DailyTasks.newDailyTask("Take out the trash");
 const id2 = DailyTasks.newDailyTask("Walk the dog");
 const id3 = DailyTasks.newDailyTask("Workout");
 const id4 = DailyTasks.newDailyTask("Meditate");
-DailyTasks.toggleTask(id1);
 Display.displayDailyTasks();
 
 const daily = document.getElementById("daily");
 const scheduled = document.getElementById("scheduled");
 const returnHome = document.querySelectorAll(".return-home");
 
+// daily task buttons
 const dailyTaskModal = document.getElementById("daily-task-modal");
 const dailyTaskForm = document.getElementById("daily-task-form");
 const newDailyTask = document.getElementById("new-daily-task");
@@ -44,7 +44,7 @@ returnHome.forEach((button) => {
             Display.hidePage(currPage);
         }
 
-        if (targetId === "start-page" ) {
+        if (targetId === "start-page") {
             Display.displayHome();
             currPage = null;
         } else {
@@ -54,10 +54,19 @@ returnHome.forEach((button) => {
     });
 });
 
+// **Daily Task Page Functionality**
 // Bring up daily task modal
 newDailyTask.addEventListener("click", () => {
+    dailyTaskInput.value = "";
     Display.displayTaskModal();
 });
+
+// Clear daily tasks
+document.getElementById("clear-daily-task")
+    .addEventListener("click", () => {
+        DailyTasks.clearTasks();
+        Display.displayDailyTasks();
+    });
 
 // Submit task input
 dailyTaskInput.addEventListener("keydown", (e) => {
@@ -80,5 +89,26 @@ document.addEventListener("keydown", (e) => {
 });
 dailyTaskModal.addEventListener("click", (e) => {
     if (e.target === dailyTaskModal) Display.hideTaskModal();
+});
+
+// Edit daily tasks
+let editingAll = false;
+const editDailyTaskBtn = document.getElementById("edit-daily-task");
+
+editDailyTaskBtn.addEventListener("click", () => {
+    if (!editingAll) {
+        DailyTasks.editTasks();
+        editDailyTaskBtn.textContent = "Save";
+
+        newDailyTask.classList.add("hidden");
+        document.getElementById("clear-daily-task").classList.add("hidden");
+    } else {
+        DailyTasks.saveTasks();
+        editDailyTaskBtn.textContent = "Edit";
+
+        newDailyTask.classList.remove("hidden");
+        document.getElementById("clear-daily-task").classList.remove("hidden");
+    }
+    editingAll = !editingAll;
 });
 
