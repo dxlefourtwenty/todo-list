@@ -1,150 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
     <script src="./index.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="start-page" class="page flex flex-col">
-        <div id="title" class="flex items-center justify-center text-5xl font-extrabold pt-2 pb-1 text-red-500 [-webkit-text-stroke:2px_black]">
-            To-Do
+      <div
+        id="title"
+        class="flex items-center justify-center text-5xl font-extrabold pt-2 pb-1 text-red-500 [-webkit-text-stroke:2px_black]"
+      >
+        To-Do
+      </div>
+      <div
+        id="priority-section"
+        class="mt-8 flex items-center justify-center gap-10"
+      >
+        <div id="scheduled" class="priority-card">
+          <div class="priority-card-title">Scheduled</div>
+          <div class="tasks">
+            <div>1. Scheduled Task One</div>
+            <div>2. Scheduled Task Two</div>
+          </div>
         </div>
-        <div id="priority-section" class="mt-8 flex items-center justify-center gap-10">
-            <div id="scheduled" class="priority-card">
-                <div class="priority-card-title">
-                    Scheduled
-                </div>
-                <div class="tasks">
-                    <div>
-                        1. Scheduled Task One
-                    </div>
-                    <div>
-                        2. Scheduled Task Two
-                    </div>
-                </div>
-            </div>
-            <div id="daily" class="priority-card">
-                <div class="priority-card-title">
-                    Daily Tasks
-                </div>
-                <div id="start-page-daily" class="tasks">
-                </div>
-            </div>
+        <div id="daily" class="priority-card">
+          <div class="priority-card-title">Daily Tasks</div>
+          <div id="start-page-daily" class="tasks"></div>
         </div>
-        <div id="projects" class="flex flex-col items-center justify-center mt-8">
-            <div class="text-3xl font-bold pb-3 text-red-500 [-webkit-text-stroke:0.7px_black]">
-                My Projects
-            </div>
-            <div id="project-cards" class="flex flex-row gap-5 pb-2 flex-wrap justify-center items-center">
-                 <div class="project-card">
-                    <div class="project-title"> 
-                        Project 1
-                    </div>
-                    <div class="project-desc">
-                        Description....
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-title">
-                        Project 2
-                    </div>
-                    <div class="project-desc">
-                        Description....
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-title">
-                        Project 3
-                    </div>
-                    <div class="project-desc">
-                        Description....
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-title">
-                        Project 4
-                    </div>
-                    <div class="project-desc">
-                        Description....
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div id="projects" class="flex flex-col items-center justify-center mt-8">
+        <div
+          class="text-3xl font-bold pb-3 text-red-500 [-webkit-text-stroke:0.7px_black]"
+        >
+          My Projects
         </div>
-        <div id="footer" class="flex justify-center items-center pb-9 pt-18 text-xs">
-            <div id="footer-text" class="text-black duration-100 hover:text-red-800 hover:font-bold">
-                Copyright @ Dale Peligro 2025
-            </div>
+        <div
+          id="project-cards"
+          class="flex flex-row gap-5 pb-2 flex-wrap justify-center items-center"
+        >
+          <div class="project-card">
+            <div class="project-title">Project 1</div>
+            <div class="project-desc">Description....</div>
+          </div>
+          <div class="project-card">
+            <div class="project-title">Project 2</div>
+            <div class="project-desc">Description....</div>
+          </div>
+          <div class="project-card">
+            <div class="project-title">Project 3</div>
+            <div class="project-desc">Description....</div>
+          </div>
+          <div class="project-card">
+            <div class="project-title">Project 4</div>
+            <div class="project-desc">Description....</div>
+          </div>
         </div>
+      </div>
+      <div
+        id="footer"
+        class="flex justify-center items-center pb-9 pt-18 text-xs"
+      >
+        <div
+          id="footer-text"
+          class="text-black duration-100 hover:text-red-800 hover:font-bold"
+        >
+          Copyright @ Dale Peligro 2025
+        </div>
+      </div>
     </div>
 
     <div id="task-page" class="hidden page">
-        <div class="nav flex flex-row items-center relative">
-            <div class="flex flex-row">
-                <div class="return-home group" data-target="start-page">
-                    << <span class="return-home-hover">Return Home</span>
-                </div>
-            </div>
-            <div class="priority-buttons">
-                <div id="new-daily-task" class="nav-button">
-                    New
-                </div>
-                <div id="edit-daily-task" class="nav-button">
-                    Edit
-                </div>
-                <div id="clear-daily-task" class="nav-button">
-                    Clear
-                </div>
-            </div>
+      <div class="nav flex flex-row items-center relative">
+        <div class="flex flex-row">
+          <div class="return-home group" data-target="start-page">
+            << <span class="return-home-hover">Return Home</span>
+          </div>
         </div>
-        <div class="border-2 h-180">
-            <div class="priority-title">
-                Daily Tasks
-            </div>
-            <div id="daily-task-content" class="priority-content">
-            </div>
+        <div class="priority-buttons">
+          <div id="new-daily-task" class="nav-button">New</div>
+          <div id="edit-daily-task" class="nav-button">Edit</div>
+          <div id="clear-daily-task" class="nav-button">Clear</div>
         </div>
+      </div>
+      <div class="border-2 h-180">
+        <div class="priority-title">Daily Tasks</div>
+        <div id="daily-task-content" class="priority-content"></div>
+      </div>
 
-        <div id="daily-task-modal" class="hidden">
-            <div class="text-white font-bold pb-1 text-2xl">
-                Add a Task
-            </div>
-             <form id="daily-task-form" class="bg-white p-6 rounded-lg w-80 h-15 flex items-center">
-                <input 
-                    id="daily-task-input" 
-                    type="text" placeholder="..." 
-                    class="w-full font-bold focus:outline-none"
-                >
-             </form>
-        </div>
+      <div id="daily-task-modal" class="hidden">
+        <div class="text-white font-bold pb-1 text-2xl">Add a Task</div>
+        <form
+          id="daily-task-form"
+          class="bg-white p-6 rounded-lg w-80 h-15 flex items-center"
+        >
+          <input
+            id="daily-task-input"
+            type="text"
+            placeholder="..."
+            class="w-full font-bold focus:outline-none"
+          />
+        </form>
+      </div>
     </div>
 
     <div id="scheduled-page" class="page hidden">
-        <div class="nav flex-row items-center relative">
-            <div class="flex flex-row">
-                <div class="return-home group" data-target="start-page">
-                    << <span class="return-home-hover">Return Home</span>
-                </div>
-                <div class="priority-buttons">
-                    <div class="nav-button">
-                        New
-                    </div>
-                    <div class="nav-button">
-                        Edit
-                    </div>
-                </div>  
-            </div>    
+      <div class="nav flex-row items-center relative">
+        <div class="flex flex-row">
+          <div class="return-home group" data-target="start-page">
+            << <span class="return-home-hover">Return Home</span>
+          </div>
+          <div class="priority-buttons">
+            <div class="nav-button">New</div>
+            <div class="nav-button">Edit</div>
+          </div>
         </div>
-        <div class="border-2 h-180">
-            <div class="priority-title">
-                Scheduled
-            </div>
-            <div class="priority-content">
-                 <div>1. Scheduled Task One</div>
-                 <div>2. Scheduled Task Two</div>
-            </div>
+      </div>
+      <div class="border-2 h-180">
+        <div class="priority-title">Scheduled</div>
+        <div class="priority-content">
+          <div>1. Scheduled Task One</div>
+          <div>2. Scheduled Task Two</div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
