@@ -1,5 +1,3 @@
-import Display from "./display.js";
-
 const DailyTasks = (() => {
   // getTasks() from API db module
   const tasks = new Map();
